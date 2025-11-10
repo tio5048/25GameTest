@@ -22,7 +22,7 @@ public class Scene7_Spike : MonoBehaviour
         if (collision.gameObject.CompareTag("SpikeDestroyer"))
         {
             Destroy(gameObject);
-            Debug.Log("Spike : ¼?¸?");
+            Debug.Log("Spike를 파괴하였습니다.");
         }
     }
 }

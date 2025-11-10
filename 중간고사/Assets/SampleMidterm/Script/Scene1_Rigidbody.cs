@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Rigidbody : MonoBehaviour
+public class Scene1_Rigidbody : MonoBehaviour
 {
     public float moveSpeed = 5.0f;
     Rigidbody2D rb;

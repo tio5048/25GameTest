@@ -9,6 +9,7 @@ TagManager:
   - RedWall
   - Ground
   - Spike
+  - SpikeDestroyer
   layers:
   - Default
   - TransparentFX

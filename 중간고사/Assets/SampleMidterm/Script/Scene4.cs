@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Scene4 : MonoBehaviour
 {
+    // ... (나머지 변수 및 Start 함수는 동일)
+
     // Inspector에 노출될 오브젝트 이동 속도
     public float speed = 5.0f;
 
@@ -19,7 +21,6 @@ public class Scene4 : MonoBehaviour
     // 초기 설정
     void Start()
     {
-        // Cube C가 Rigidbody를 가지고 있는지 확인합니다.
         rb = GetComponent<Rigidbody>();
         Time.timeScale = timeSpeed;
         SetColor();
@@ -33,21 +34,17 @@ public class Scene4 : MonoBehaviour
             ToggleTimeScale();
         }
 
+        // ? 수정된 부분: Time.timeScale과 Time.deltaTime을 함께 출력
+        Debug.Log("TimeScale: " + Time.timeScale + " | DeltaTime: " + Time.deltaTime);
+
         // 모든 큐브의 이동을 Update에서 처리합니다.
         MoveObject();
     }
 
-    // FixedUpdate는 더 이상 사용하지 않습니다.
-    /*
-    void FixedUpdate()
-    {
-        // ...
-    }
-    */
+    // ... (MoveObject, ToggleTimeScale, SetColor 함수는 동일)
 
     // ---------------------- 이동 로직 --------------------------
 
-    // Cube A, B, C의 이동을 모두 처리하는 통합 함수
     private void MoveObject()
     {
         Vector3 moveDirection = Vector3.right;
@@ -56,23 +53,18 @@ public class Scene4 : MonoBehaviour
         switch (movementType)
         {
             case MovementType.FrameRateDependent:
-                // CubeA (빨강): 프레임률 기반 이동 (Time.deltaTime 미사용)
                 moveDistance = speed;
                 break;
 
             case MovementType.DeltaTimeIndependent:
-                // CubeB (초록): Time.deltaTime 사용 (Time.timeScale 영향 받음)
                 moveDistance = speed * Time.deltaTime;
                 break;
 
             case MovementType.DeltaTimeDependentRigidbody:
-                // CubeC (파랑): Rigidbody는 유지하되, Update에서 Time.deltaTime으로 이동
-                // 이로써 CubeB와 동일하게 Time.timeScale의 영향을 받으며 안정적으로 움직입니다.
                 moveDistance = speed * Time.deltaTime;
                 break;
         }
 
-        // Transform.Translate를 사용하여 오른쪽으로 이동
         transform.Translate(moveDirection * moveDistance, Space.World);
     }
 

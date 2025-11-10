@@ -4,7 +4,7 @@ using UnityEngine.InputSystem; // 🔹 새 입력 시스템 사용
 // 🎮 TransformMover
 // Transform.position 을 직접 변경하여 이동.
 // ⚠️ 물리엔진 영향 X → Collider 겹침, 중력 무시.
-public class TransformMover : MonoBehaviour
+public class Scene1_Transform : MonoBehaviour
 {
     public float moveSpeed = 5.0f; // 이동 속도
 
